@@ -1,22 +1,28 @@
+/*
+Covid 19 Data Exploration 
+
+Skills used: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types
+
+*/
+
 select *
 from PortfolioProject..CovidDeaths
 where continent is not null
 order by 3,4
 
 
-
 select *
 from PortfolioProject..CovidVaccinations
+where continent is not null	
 order by 3,4
 
 -- Select Data that we are going to be using
 
---Select Location, date, total_cases, new_cases,total_deaths,population
---from PortfolioProject..CovidDeaths
---order by location,date
+Select Location, date, total_cases, new_cases,total_deaths,population
+from PortfolioProject..CovidDeaths
+order by location,date
 
 -- Looking at Total Cases vs Total Deaths
-
 
 Select Location, date, total_cases,total_deaths, (total_deaths/total_cases) * 100 as DeathPercentage
 from PortfolioProject..CovidDeaths
@@ -27,7 +33,7 @@ order by 1,2
 -- Shows percentage of population that got covid
 Select Location, date, total_cases,population, (total_cases/population) * 100 as InfectionPercentage
 from PortfolioProject..CovidDeaths
-Where location = 'Egypt'
+--Where location = 'Egypt'
 order by 1,2
 
 
